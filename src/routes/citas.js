@@ -4,7 +4,9 @@ const router = Router();
 
 
 router
-    .get("/citas", Citas.users)
+    .get("/users", Citas.users)
+
+    .get("/doctors", Citas.specialityDoctors)
 
 
 export default router;
