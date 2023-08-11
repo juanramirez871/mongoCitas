@@ -8,5 +8,7 @@ router
 
     .get("/doctors", Citas.specialityDoctors)
 
+    .get("/quotes/next/:id", Citas.quotesNext)
+
 
 export default router;

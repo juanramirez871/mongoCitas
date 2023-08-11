@@ -27,4 +27,14 @@ export default class Citas {
 
         return res.json(data);
     }
+
+    static async quotesNext(req, res){
+
+        const data = await Doctors
+            .find()
+            .project({ consultingRoom: 0 })
+            .toArray();
+
+        return res.json(data);
+    }
 }
