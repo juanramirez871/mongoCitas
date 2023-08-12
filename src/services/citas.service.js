@@ -91,4 +91,14 @@ export default class Citas {
 
         res.json(data)
     }
+
+    static async consultingRoomDoctors(req, res){
+
+        const data = await Doctors
+            .find()
+            .project({ speciality: 0 })
+            .toArray();
+
+        res.json(data)
+    }
 }
