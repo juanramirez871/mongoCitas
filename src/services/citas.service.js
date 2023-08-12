@@ -71,5 +71,24 @@ export default class Citas {
 
     static async quotesDate(req, res){
         
+        const data = await Users
+            .aggregate([
+                {
+                    $project: {
+                        _id: 0,
+                        quotes: {
+                            $filter: {
+                                input: "$quotes",
+                                as: "quote",
+                                cond: { $eq: ["$$quote.date", "2023-07-12"] }
+                            }
+                        }
+                    }
+                },
+                { $match: { quotes: { $ne: [] } } }
+            ])
+            .toArray()
+
+        res.json(data)
     }
 }
