@@ -30,10 +30,28 @@ export default class Citas {
 
     static async quotesNext(req, res){
 
-        const data = await Doctors
-            .find()
-            .project({ consultingRoom: 0 })
-            .toArray();
+        const data = await Users
+        .aggregate([
+            { 
+                $match: {_id: new ObjectId(req.params.id)},
+            },
+            {
+                $project: {
+                    _id: 0,
+                    quotes: {
+                        $filter: {
+                            input: "$quotes",
+                            as: "quote",
+                            cond: { $eq: [ "$$quote.code", 1 ] }
+                        }
+                    } 
+                }
+            },
+            { $unwind: "$quotes" }
+        ])    
+        .toArray();
+
+        if(data.length == 0) return res.json({ msg: "no tiene citas proximas" })
 
         return res.json(data);
     }
