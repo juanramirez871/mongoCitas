@@ -55,4 +55,21 @@ export default class Citas {
 
         return res.json(data);
     }
+
+    static async usersDoctor(req, res){
+
+        const data = await Users
+            .aggregate([
+                {
+                    $match: { "quotes.doctorId": new ObjectId(req.params.id) }
+                }
+            ])
+            .toArray()
+
+        res.json(data)
+    }
+
+    static async quotesDate(req, res){
+        
+    }
 }

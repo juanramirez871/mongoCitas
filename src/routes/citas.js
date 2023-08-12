@@ -10,5 +10,8 @@ router
 
     .get("/quotes/next/:id", Citas.quotesNext)
 
+    .get("/users/doctor/:id", Citas.usersDoctor)
+
+    .get("/quotes/date", Citas.quotesDate)
 
 export default router;
