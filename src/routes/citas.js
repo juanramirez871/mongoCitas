@@ -16,4 +16,6 @@ router
 
     .get("/counsultingRoom", Citas.consultingRoomDoctors)
 
+    .get("/quotes/specify", Citas.quotesSpecify)
+
 export default router;

@@ -100,4 +100,13 @@ export default class Citas {
 
         res.json(data)
     }
+
+    static async quotesSpecify(req, res){
+
+        const data = await Users
+            .find()
+            .toArray();
+
+        res.json(data)
+    }
 }
