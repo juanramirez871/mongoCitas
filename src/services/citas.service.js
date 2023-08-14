@@ -96,7 +96,6 @@ export default class Citas {
 
         const data = await Doctors
             .find()
-            .project({ speciality: 0 })
             .toArray();
 
         res.json(data)
