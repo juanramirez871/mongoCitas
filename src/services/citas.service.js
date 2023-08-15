@@ -109,4 +109,10 @@ export default class Citas {
 
         res.json(data)
     }
+
+    static async postUser(req, res){
+
+        await Users.insertOne(req.body)
+        res.json({ msg: "Creado correctamente" })
+    }
 }

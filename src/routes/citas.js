@@ -18,4 +18,6 @@ router
 
     .get("/quotes/specify", Citas.quotesSpecify)
 
+    .post("/user", Citas.postUser)
+
 export default router;
